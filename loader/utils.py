@@ -5,6 +5,7 @@ from exceptions import WrongImgType
 
 
 def save_picture(picture):
+    """Сохраняет картинку если формат из списка allowed_type, иначе вызывает ошибку WrongImgType"""
     allowed_type = ["jpg", "png", "gif", "jpeg"]
     picture_type = picture.filename.split(".")[-1]
     if picture_type not in allowed_type:
@@ -16,6 +17,7 @@ def save_picture(picture):
 
 
 def add_post(post_list, post):
+    """функция добавления поста с записью в json файл"""
     post_list.append(post)
     with open(POST_PATH, "w", encoding="utf-8") as file:
         json.dump(post_list, file)
